@@ -1,6 +1,7 @@
+/**************************************"AM head file"******************************************/
 #ifndef AM_H
 #define AM_H
-//�ڽӶ��ر� 
+//ÁÚ½Ó¶àÖØ±í 
 #define MAX_NODE_NUM  10
 #define error         0 
 #define success       1
@@ -40,11 +41,12 @@ class AM
 };
 #endif
 
-/********************************************************************************/
+/*************************************"AM cpp file"*******************************************/
 #include "AM.h"
 #include <iostream>
 using namespace std;
 
+//创建邻接表
 int AM::create(int vexnum,vector<vector<int>> &edgelist){
 	int i,j;
 	edge *p;
@@ -69,6 +71,7 @@ int AM::create(int vexnum,vector<vector<int>> &edgelist){
 	return success;
 }
 
+//深度遍历
 void AM::DFStraver(){
 	int i;
 	for(i=0;i<G.vexnum;i++)
@@ -83,7 +86,7 @@ int AM::DFS(int i){
 	p = G.head[i].firstedge;
 	if(visited[i])
 		return 0;
-	cout << i << endl; //��ӡ�ڵ�� 
+	cout << i << endl; //´òÓ¡½ÚµãºÅ 
 	visited[i] = true;
 	while(p){
 		if(p->jnode == i){
@@ -97,10 +100,11 @@ int AM::DFS(int i){
 	}
 }
 
+//广度遍历
 void AM::BFStraver(){
 	int i,cur,next;
 	edge *p;
-	for(i=0;i<G.vexnum;i++) //�����־ 
+	for(i=0;i<G.vexnum;i++) //Êý×é±êÖ¾ 
 		visited.push_back(false); 
 	for(i=0;i<G.vexnum;i++){
 		if(!visited[i]){
