@@ -1,7 +1,6 @@
-/**************************************"AM head file"******************************************/
+﻿/**************************************"AM head file"******************************************/
 #ifndef AM_H
 #define AM_H
-//ÁÚ½Ó¶àÖØ±í 
 #define MAX_NODE_NUM  10
 #define error         0 
 #define success       1
@@ -12,6 +11,7 @@ using namespace std;
 
 class AM
 {
+	//边
 	struct edge{
 		int mark;
 		int inode;
@@ -20,11 +20,13 @@ class AM
 		struct edge *jlink;
 	};
 	
+	//节点
 	typedef struct{
 		int data;
 		struct edge *firstedge;
 	}Node;
 	
+	//表
 	typedef struct{
 		Node head[MAX_NODE_NUM];
 		int vexnum,edgenum;
@@ -86,7 +88,7 @@ int AM::DFS(int i){
 	p = G.head[i].firstedge;
 	if(visited[i])
 		return 0;
-	cout << i << endl; //´òÓ¡½ÚµãºÅ 
+	cout << i << endl;
 	visited[i] = true;
 	while(p){
 		if(p->jnode == i){
@@ -104,7 +106,7 @@ int AM::DFS(int i){
 void AM::BFStraver(){
 	int i,cur,next;
 	edge *p;
-	for(i=0;i<G.vexnum;i++) //Êý×é±êÖ¾ 
+	for(i=0;i<G.vexnum;i++) 
 		visited.push_back(false); 
 	for(i=0;i<G.vexnum;i++){
 		if(!visited[i]){
